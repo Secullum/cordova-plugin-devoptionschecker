@@ -16,16 +16,24 @@ public class DevOptionsChecker extends CordovaPlugin {
         if (action.equals("check")) {
             ContentResolver resolver = cordova.getActivity().getContentResolver();
 
-            callbackContext.success(new JSONObject().put(
-                "devOptionsEnabled",
-                android.os.Build.VERSION.SDK_INT < 18
-                    ? Settings.Secure.getString(resolver, Settings.Secure.DEVELOPMENT_SETTINGS_ENABLED).equals("1")
-                    : Settings.Global.getString(resolver, Settings.Global.DEVELOPMENT_SETTINGS_ENABLED).equals("1")
-            ));
-            
+            int androidSdkVersion = android.os.Build.VERSION.SDK_INT;
+
+            try {
+                callbackContext.success(new JSONObject().put(
+                    "devOptionsEnabled",
+                    Settings.Secure.getInt(resolver,
+                        androidSdkVersion < 16 ?
+                        Settings.Secure.ADB_ENABLED :
+                        androidSdkVersion == 16 ?
+                        Settings.Secure.DEVELOPMENT_SETTINGS_ENABLED :
+                        Settings.Global.DEVELOPMENT_SETTINGS_ENABLED, 0) != 0
+                ));
+            } catch (Exception e) {
+                callbackContext.success(new JSONObject().put(
+                    "devOptionsEnabled", true));
+            }
             return true;
         }
-
         return false;
     }
 }
