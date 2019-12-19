@@ -30,7 +30,7 @@ public class DevOptionsChecker extends CordovaPlugin {
                 ));
             } catch (Exception e) {
                 callbackContext.success(new JSONObject().put(
-                    "devOptionsEnabled", true));
+                    "devOptionsEnabled", false));
             }
             return true;
         }
