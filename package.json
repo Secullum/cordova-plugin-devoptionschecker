@@ -1,21 +1,21 @@
 {
-  "name": "cordova-plugin-devoptionschecker",
-  "version": "1.0.1",
-  "description": "",
-  "cordova": {
-    "id": "cordova-plugin-devoptionschecker",
-    "platforms": [
-      "android"
-    ]
-  },
-  "keywords": [
-    "ecosystem:cordova",
-    "cordova-android",
-    "developer-options",
-    "developer-settings",
-    "checker"
-  ],
-  "author": "mmenezes",
-  "license": "MIT",
-  "main": "index.js"
+	"name": "cordova-plugin-devoptionschecker",
+	"version": "1.0.2",
+	"description": "",
+	"cordova": {
+		"id": "cordova-plugin-devoptionschecker",
+		"platforms": [
+			"android"
+		]
+	},
+	"keywords": [
+		"ecosystem:cordova",
+		"cordova-android",
+		"developer-options",
+		"developer-settings",
+		"checker"
+	],
+	"author": "mmenezes",
+	"license": "MIT",
+	"main": "index.js"
 }
